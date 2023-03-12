@@ -1,0 +1,44 @@
+<!--==========================================
+=            All Category Section            =
+===========================================-->
+
+<section class=" section">
+	<!-- Container Start -->
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<!-- Section title -->
+				<div class="section-title">
+					<h2>All Categories</h2>
+
+				</div>
+				<div class="row">
+					<!-- Category list -->
+					{% for category in category %}
+					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+						<div class="category-block">
+							<div class="header">
+								<i class="icon-bg-1"><img src="{{category.imageURL}}"></i>
+
+								<h4>{{category.name}}</h4>
+							</div>
+							<ul class="category-list" >
+								{% for subcategory in subcategory%}
+				{% if subcategory.category == category %}
+								<li><a href="{% url 'main_app:show_category' subcategory.id %}">{{subcategory.name}}</a></li>
+
+								{%endif%}
+								{%endfor%}
+							</ul>
+						</div>
+					</div>
+					{%endfor%}
+
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,86 @@
+{% extends 'petite_annonce/elements/layouts/base.html'%}
+{%load static%}
+{% load widget_tweaks %}
+{% block additional_css %}
+<head>
+    <meta charset="UTF-8">
+	<meta name="csrf_token" content="{{ csrf_token }}">
+    <title>Ajouter Annonce</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<link rel="stylesheet" href="{%static 'style1.css'%}">
+{% endblock %}
+{% block message %}
+{% include 'petite_annonce/elements/alert.html' %}
+{% endblock %}
+
+{% block content%}
+<body>
+<form method="post" enctype="multipart/form-data">
+     {%include 'petite_annonce/elements/vehicule_marque.html'%}
+    <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" >L'annee modele :</label>
+                    {{ vehic.annee_modele}}
+                </div>
+              </div>
+             <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" >Kilometrage :</label>
+                    {{ vehic.kilometrage }}
+                </div>
+            </div>
+        </div>
+    <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" >Type de Carburant :</label>
+                    {{ vehic.type_carburant|attr:"class:form-select form-control-lg"}}
+                </div>
+              </div>
+             <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" >Boite vitasses :</label>
+                    {{ vehic.boite_vitasses|attr:"class:form-select form-control-lg" }}
+                </div>
+            </div>
+        </div>
+    <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" >le Nombre des portes :</label>
+                    {{ vehic.Nombre_portes }}
+                </div>
+              </div>
+             <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" >Puissance Fiscale :</label>
+                    {{ vehic.puissance_fiscale }}
+                </div>
+            </div>
+        </div>
+    <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" >L'etat de vehicule :</label>
+                    {{ vehic.etat|attr:"class:form-select form-control-lg" }}
+                </div>
+              </div>
+             <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" >L'origine :</label>
+                    {{ vehic.origine|attr:"class:form-select form-control-lg" }}
+                </div>
+            </div>
+        </div>
+
+
+{% csrf_token %}
+
+        <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
+    </form>
+
+</body>
+{% endblock %}

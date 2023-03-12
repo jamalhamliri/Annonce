@@ -1,0 +1,8 @@
+
+  {% for subcategory in subcategorys %}
+    <option value="{{ subcategory.id }}">{{ subcategory.name }}</option>
+  {% endfor %}
+
+  {% for commune in communes %}
+    <option value="{{ commune.id }}">{{ commune.name }}</option>
+  {% endfor %}

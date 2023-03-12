@@ -1,0 +1,7 @@
+{% autoescape off %}
+Hi {{ gest.email }},
+
+vous allez trouver votre discussion avec {{user}} dans le lien suivant:
+
+{{ protocol }}://{{ domain }}/chat/{{ annonce_id }}/message_gest/{{ gest_id }}/{{ conversation_id }}
+{% endautoescape %}

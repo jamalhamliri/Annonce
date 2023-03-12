@@ -1,0 +1,213 @@
+{% extends 'petite_annonce/elements/layouts/base.html'%}
+{%load static%}
+
+{% block additional_css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{%static 'css/search.css'%}">
+<link rel="stylesheet" href="{%static 'css/carsoul.css'%}">
+<link rel="stylesheet" href="{%static 'style1.css'%}">
+<link rel="stylesheet" href="{%static 'css/range.css'%}">
+
+{% endblock %}
+
+{% block message %}
+{% include 'petite_annonce/elements/alert.html' %}
+{% endblock %}
+{% block content%}
+{%include 'petite_annonce/elements/search.html'%}
+
+
+<div class="container">
+ <!--<h1>Top catégories</h1>
+
+
+      <div class="row">
+
+            {% for photo in photos %}
+			<div class="col-sm-12 col-lg-4">
+      <div class="card" style="width: 18rem;">
+  <img src="{{ photo.imageURL }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ photo.annonce.name }}</h5>
+    <p class="card-text">{{ photo.annonce.price }} $</p>
+    <a href="{%url 'main_app:view_annonce' photo.annonce.id %}" class="btn btn-primary">Afficher</a>
+  </div></div>
+			</div>
+          {% endfor %}
+</div>-->
+
+<section>
+	<div class="row">
+			<div class="col-md-12">
+				<div class="section-title">
+					 <h1>Top catégories</h1>
+
+				</div>
+			</div>
+	</div>
+	<div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+
+			<div class="carousel-inner">
+
+			{% for top in top %}
+				<div class="carousel-item active">
+
+					<div class="card">
+
+						{% for photo in photos%}
+						{% if photo.annonce == top.annonce %}
+						<div class="img-wrapper"><img src="{{ photo.imageURL }}" class="d-block w-100" alt="..."> </div>
+
+						{{ "<!--" }}
+						  {%endif%}
+						{%endfor%}
+						{{ "-->" }}
+						<div class="card-body">
+							<h5 class="card-title">{{ top.annonce.name }}</h5>
+							<p class="card-text">{{ top.annonce.description }}</p>
+							<a href="{%url 'main_app:view_annonce' top.annonce.id %}" class="btn btn-primary">Afficher</a>
+						</div>
+					</div>
+
+				</div>
+		{% endfor %}
+				</div>
+
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+</section>
+</div>
+<section class="popular-deals section bg-gray">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title">
+					 <h1>Les Produits</h1>
+
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<!-- offer 01 -->
+            {% for annonce in annonces %}
+			<div class="col-sm-12 col-lg-4" >
+				<!-- product card -->
+				<div class="product-item bg-light" >
+					<div class="card" >
+						<div class="thumb-content" >
+							<!-- <div class="price">$200</div> -->
+							{% for photo in photos%}
+								{% if photo.annonce == annonce %}
+								<a href="">
+									<img class="card-img-top img-fluid" style="width : 400px;height : 400px;" src="{{ photo.imageURL }}" alt="Card image cap">
+								</a>
+									{{ "<!--" }}
+								  {%endif%}
+								{%endfor%}
+								{{ "-->" }}
+						</div>
+						<div class="card-body" >
+							<h4 class="card-title"><a href="">{{ annonce.name }}</a></h4>
+							<ul class="list-inline product-meta">
+								<li class="list-inline-item">
+									<a href=""><i class="fa fa-folder-open-o"></i>{{ annonce.subcategory.category }}</a>
+									<a href=""><i class="fa fa-folder-open-o"></i>{{ annonce.subcategory.name }}</a>
+								</li>
+								<li class="list-inline-item">
+									<a href=""><i class="fa fa-calendar"></i>{{ annonce.created }}</a>
+								</li>
+							</ul>
+							<p class="card-text">{{ annonce.description }}</p>
+							<!--<div class="product-ratings">
+								<ul class="list-inline">
+									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+									<li class="list-inline-item"><i class="fa fa-star"></i></li>
+
+								</ul>
+
+							</div>-->
+							<p class="card-text">{{ annonce.price }} $</p>
+							<a href="{%url 'main_app:view_annonce' annonce.id %}" class="btn btn-primary">Afficher</a>
+							{% if user.is_authenticated %}
+							<a href="{%url 'main_app:mark-favourite' annonce.id %}" class="btn btn-primary">Add to favourite</a>
+							{%endif%}
+						</div>
+					</div>
+				</div>
+			</div>
+            {% endfor%}
+			</div>
+		</div>
+</section>
+{%include 'petite_annonce/elements/categories.html'%}
+
+{% endblock %}
+{% block additional_js %}
+<script src="{%static 'js/search.js'%}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+<script>
+	var multipleCardCarousel = document.querySelector(
+  "#carouselExampleControls"
+);
+if (window.matchMedia("(min-width: 768px)").matches) {
+  var carousel = new bootstrap.Carousel(multipleCardCarousel, {
+    interval: false,
+  });
+  var carouselWidth = $(".carousel-inner")[0].scrollWidth;
+  var cardWidth = $(".carousel-item").width();
+  var scrollPosition = 0;
+  $("#carouselExampleControls .carousel-control-next").on("click", function () {
+    if (scrollPosition < carouselWidth - cardWidth * 4) {
+      scrollPosition += cardWidth;
+      $("#carouselExampleControls .carousel-inner").animate(
+        { scrollLeft: scrollPosition },
+        600
+      );
+    }
+  });
+  $("#carouselExampleControls .carousel-control-prev").on("click", function () {
+    if (scrollPosition > 0) {
+      scrollPosition -= cardWidth;
+      $("#carouselExampleControls .carousel-inner").animate(
+        { scrollLeft: scrollPosition },
+        600
+      );
+    }
+  });
+} else {
+  $(multipleCardCarousel).addClass("slide");
+}
+</script>
+<script>
+	// Show the first tab and hide the rest
+$('#tabs-nav li:first-child').addClass('active');
+$('.tab-content').hide();
+$('.tab-content:first').show();
+
+// Click function
+$('#tabs-nav li').click(function(){
+  $('#tabs-nav li').removeClass('active');
+  $(this).addClass('active');
+  $('.tab-content').hide();
+
+  var activeTab = $(this).find('a').attr('href');
+  $(activeTab).fadeIn();
+  return false;
+});
+					</script>
+
+{% endblock %}

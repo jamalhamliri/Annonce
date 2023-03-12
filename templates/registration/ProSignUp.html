@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load widget_tweaks %}
+{%load static %}
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+<style>
+    .normal-user{
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white">
+        <div class="container">
+              <a class="navbar-brand" href="{% url 'main_app:index'%}">
+                <!-- <img src="img/brand.png" class="brand"> -->
+                <i class="fa-solid fa-arrow-left"></i>
+              </a>
+              <h2 class="text-muted"> <img style="width : 193px;height : 50px;" src="{% static 'img/LOGO11.png' %}"> <span class="text-warning"></span></h2>
+                 <ul class="">
+
+                 </ul>
+        </div>
+      </nav>
+    <section class="vh-70 gradient-custom">
+        <div class="container py-5 h-70">
+          <div class="row justify-content-center align-items-center h-70">
+            <div class="col-12 col-lg-9 col-xl-7">
+              <div class="card shadow-2-strong card-registration normal-user" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5">
+                {% include 'petite_annonce/elements/alert.html' %}
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Création de compte professionnel</h3>
+                  <form method="post" >
+                    {% csrf_token %}
+                      <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Entreprise</h3>
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+
+                        <div class="form-outline">
+                            <label class="form-label" for="firstName">Numero d'entreprise</label>
+                            {{ formadd.numero_ent|attr:"type:text"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ formadd.numero_ent.errors }}
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <label class="form-label" for="lastName">Nom entreprise</label>
+                            {{ formadd.nom_ent|attr:"type:text"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ formadd.nom_ent.errors }}
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <label class="form-label" for="lastName">Categorie</label>
+                            {{ formadd.categorie|attr:"type:text"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ formadd.categorie.errors }}
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <label class="form-label" >Phone Number</label>
+                            {{ form.phone|attr:"type:text"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ form.phone.errors }}
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <label class="form-label" for="address">L'address de l'entreprise</label>
+                            {{ formadd.address|attr:"type:text"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ formadd.address.errors }}
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <label class="form-label" for="justification">Justification</label>
+                            {{ formadd.justification|attr:"type:file"|attr:"class:form-control form-control-lg" }}
+                        </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <label class="form-label" for="complement">Complement</label>
+                            {{ form.about|attr:"type:text"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ form.about.errors }}
+                            </div>
+                        </div>
+                      </div>
+                      </div>
+                      <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Compte</h3>
+                      <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label" for="gender">Civilité : </label>
+                            {%for gd in form.gender%}
+                            <div class="form-check " >
+                              {{ gd }}
+                            </div>
+                            {%endfor%}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ form.gender.errors }}
+                            </div>
+                        </div>
+                      </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+
+                        <div class="form-outline">
+                            <label class="form-label" for="firstName">Prenom</label>
+                            {{ form.first_name|attr:"type:text"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ form.first_name.errors }}
+                            </div>
+                        </div>
+
+                      </div>
+                      <div class="col-md-6 mb-4">
+
+                        <div class="form-outline">
+                            <label class="form-label" for="lastName">Nom</label>
+                            {{ form.last_name|attr:"type:text"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ form.last_name.errors }}
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                        <label class="form-label" for="emailAddress">Email{% if form.email.required %}*{% endif %}</label>
+                            {{ form.email|attr:"type:email"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ form.email.errors }}
+                            </div>
+                        </div>
+                      </div>
+                        <div class="col-md-6 mb-4 pb-2">
+                            <div class="form-outline datepicker w-100">
+                            <label for="birthdayDate" class="form-label">Birthday</label>
+                            {{ form.date_of_birth|attr:"type:date"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ form.date_of_birth.errors }}
+                            </div>
+
+                        </div>
+                          </div>
+                    </div>
+                      <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                        <label class="form-label" for="Address">Address</label>
+                            {{ form.address|attr:"type:text"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ form.address.errors }}
+                            </div>
+                        </div>
+                      </div>
+                        <div class="col-md-6 mb-4 pb-2">
+                            <div class="form-outline datepicker w-100">
+                            <label for="image" class="form-label">Photo de profile</label>
+                            {{ form.image|attr:"type:file"|attr:"class:form-control form-control-lg" }}
+                            <div class="text-danger w-100 d-block mt-1">
+                                {{ form.image.errors }}
+                            </div>
+
+                        </div>
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+                            <div class="form-outline">
+                         <label class="form-label" for="emailAddress">Mots de passe
+                            {% if form.password1.required %}*{% endif %}
+                         </label>
+                                {{ form.password1|attr:"type:password"|attr:"class:form-control form-control-lg" }}
+                                <div class="text-danger w-100 d-block mt-1">
+                                    {{ form.password1.errors }}
+                                </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4 pb-2">
+                            <div class="form-outline">
+                            <label class="form-label" for="emailAddress">Confirmation de mots de passe</label>
+                                {{ form.password2|attr:"type:password"|attr:"class:form-control form-control-lg" }}
+                                <div class="text-danger w-100 d-block mt-1">
+                                    {{ form.password2.errors }}
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                    <small class="text-secondary mb-3">
+                        En créant mon compte professionnel je reconnais avoir lu et accepté les Conditions Générales de Vente et les Conditions Générales d‘Utilisation.
+                    </small>
+                      <div class="mt-2 text-center">
+                    <button class="btn btn-dark w-50 mb-5">Créer mon compte professionnel</button>
+                      </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+          <!-- JavaScript Bundle with Popper -->
+     <script src="{%static 'js/bootstrap.bundle.js'%}"></script>
+</body>
+</html>

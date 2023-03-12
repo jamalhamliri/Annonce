@@ -1,0 +1,158 @@
+{%load static%}
+<div class="product-review">
+    <div class="media">
+        {% for comt in comts %}
+        <!-- Avater -->
+
+      <img class="rounded-circle" src="{% static 'img/default_profile.png'%}">
+
+        <div class="media-body">
+            <!-- Ratings -->
+            <div class="ratings">
+    <!--            {% if comt.rating == 0 %}
+    <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                </ul>
+{% elif comt.rating == 1 %}
+    <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <i class="fa fa-star checked"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                </ul>
+{% elif comt.rating == 2 %}
+    <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <i class="fa fa-star checked"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star checked"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                </ul>
+                {% elif comt.rating == 3 %}
+    <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <i class="fa fa-star checked"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star checked"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star checked"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star"></i>
+                    </li>
+                </ul>
+                {% elif comt.rating == 4 %}
+    <ul class="list-inline">
+									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+									<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+									<li class="list-inline-item"><i class="fa fa-star"></i></li>
+
+								</ul>
+{% else %}
+    <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <i class="fa fa-star checked"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star checked"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star checked"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star checked"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-star checked"></i>
+                    </li>
+                </ul>
+{% endif %}-->
+                <h5>rating : {{comt.rating}}/5</h5>
+
+            </div>
+            <div class="name">
+                {% if comt.gest != NULL %}
+                <h5>{{comt.gest.first_name}} {{comt.gest.last_name}}</h5>
+                {%else%}
+                <h5>{{comt.user.first_name}} {{comt.user.last_name}}</h5>
+                {%endif %}
+            </div>
+            <div class="date">
+                <p>{{comt.created}}</p>
+            </div>
+            <div class="review-comment">
+                <p>
+                    {{comt.comment}}
+                </p>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    <div class="review-submission">
+        <h3 class="tab-title">laisser ton opinon</h3>
+        <!-- Rate -->
+        <div class="rate">
+            <div class="starrr"></div>
+        </div>
+        <div class="review-submit">
+            <form method="post" class="row">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                {{form_com.as_p}}
+                {%else%}
+                {{form_gest.as_p}}
+                {{form_com.as_p}}
+                {%endif%}
+
+
+
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-main">Sumbit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+{% for auto in autos%}
+<table class="table table-bordered product-table">
+  <tbody>
+	<tr>
+	  <td>Seller Price</td>
+	  <td>${{annonce.price}}</td>
+	</tr>
+	<tr>
+	  <td>Ajouter</td>
+	  <td>{{annonce.created}}</td>
+	</tr>
+
+	<tr>
+	  <td>La marque</td>
+	  <td>{{auto.marque}}</td>
+	</tr>
+	<tr>
+	  <td>Le modele</td>
+	  <td>{{auto.modele}}</td>
+	</tr>
+	<tr>
+	  <td>L'annee</td>
+	  <td>{{auto.annee_modele}}</td>
+	</tr>
+	<tr>
+	  <td>Kilometrage</td>
+	  <td>{{auto.kilometrage}} KM</td>
+	</tr>
+  <tr>
+	  <td>Puissance fiscale</td>
+	  <td>{{auto.puissance_fiscale}}</td>
+	</tr>
+	<tr>
+  <td>boite à vitesse</td>
+	  <td>{{auto.boite_vitasses}}</td>
+	</tr>
+  <tr>
+  <td>N° de portes</td>
+	  <td>{{auto.Nombre_portes}}</td>
+	</tr>
+  <tr>
+  <td>Origine</td>
+	  <td>{{auto.origine}}</td>
+	</tr>
+  <tr>
+  <td>Etat</td>
+	  <td>{{auto.etat}}</td>
+	</tr>
+
+
+  </tbody>
+</table>
+{%endfor%}

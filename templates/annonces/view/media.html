@@ -1,0 +1,33 @@
+{% for media in medias%}
+<table class="table table-bordered product-table">
+  <tbody>
+	<tr>
+	  <td>Seller Price</td>
+	  <td>${{annonce.price}}</td>
+	</tr>
+	<tr>
+	  <td>Ajouter</td>
+	  <td>{{annonce.created}}</td>
+	</tr>
+
+	<tr>
+	  <td>Brand</td>
+	  <td>{{media.marque}}</td>
+	</tr>
+	<tr>
+	  <td>Etat</td>
+	  <td>{{media.etat}}</td>
+	</tr>
+
+	<tr>
+	  <td>Model</td>
+	  <td>{{media.model.name}}</td>
+	</tr>
+
+	<tr>
+	  <td>Stockage</td>
+	  <td>{{media.stockage}}</td>
+	</tr>
+  </tbody>
+</table>
+{%endfor%}

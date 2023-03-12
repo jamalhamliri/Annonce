@@ -1,0 +1,46 @@
+{% for imbo in imobs%}
+<table class="table table-bordered product-table">
+  <tbody>
+	<tr>
+	  <td>Seller Price</td>
+	  <td>${{annonce.price}}</td>
+	</tr>
+	<tr>
+	  <td>Ajouter</td>
+	  <td>{{annonce.created}}</td>
+	</tr>
+
+	<tr>
+	  <td>lieu</td>
+	  <td>{{annonce.commune}}</td>
+	</tr>
+	<tr>
+	  <td>N° des chambres</td>
+	  <td>{{imbo.chambres}}</td>
+	</tr>
+
+	<tr>
+	  <td>N° des salle de bain</td>
+	  <td>{{imbo.salle_bain}}</td>
+	</tr>
+
+	<tr>
+	  <td>Etage</td>
+	  <td>{{imbo.etage}}</td>
+	</tr>
+  <tr>
+	  <td>Surface</td>
+	  <td>{{imbo.surface}}</td>
+	</tr>
+  <tr>
+	  <td>Age</td>
+	  <td>{{imbo.age}}</td>
+	</tr>
+  <tr>
+	  <td>frais syndic</td>
+	  <td>{{imbo.frais_syndic}}</td>
+	</tr>
+  </tbody>
+</table>
+{%endfor%}
+

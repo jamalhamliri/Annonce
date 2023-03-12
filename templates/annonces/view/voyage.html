@@ -1,0 +1,44 @@
+{% for vg in voyage%}
+<table class="table table-bordered product-table">
+  <tbody>
+  <tr>
+	  <td>Type de voyage</td>
+	  <td>{{vg.type.name}}</td>
+	</tr>
+  <tr>
+	  <td>Organisation</td>
+	  <td>{{vg.user.first_name}} {{vg.user.last_name}}</td>
+	</tr>
+	<tr>
+	  <td>Voyage budget</td>
+	  <td>${{annonce.price}}</td>
+	</tr>
+	<tr>
+	  <td>Ajouter</td>
+	  <td>{{annonce.created}}</td>
+	</tr>
+
+	<tr>
+	  <td>lieu</td>
+	  <td>{{annonce.commune}}</td>
+	</tr>
+	<tr>
+	  <td>ville de depart</td>
+	  <td>{{vg.ville_depart}}</td>
+	</tr>
+	<tr>
+	  <td>ville d'arrive</td>
+	  <td>{{vg.ville_arrive}}</td>
+	</tr>
+	<tr>
+	  <td>date de depart</td>
+	  <td>{{vg.date_depart}}</td>
+	</tr>
+	<tr>
+	  <td>date d'arrive</td>
+	  <td>{{vg.date_arrive}}</td>
+	</tr>
+  </tbody>
+</table>
+{%endfor%}
+

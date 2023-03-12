@@ -1,0 +1,63 @@
+{% extends 'petite_annonce/elements/layouts/base.html'%}
+{% load static %} {% block content %}
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+      <!-- Masthead Avatar Image--><img
+        class="masthead-avatar mb-5"
+        src="assets/img/avataaars.svg"
+        alt=""
+      />
+      <!-- Masthead Heading-->
+      <h1 class="masthead-heading mb-0">FAVOURITE ANNONCES</h1>
+      <!-- Icon Divider-->
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+      </div>
+      <!-- Masthead Subheading-->
+
+      {% if not favourite %}<h2>No Annonce in your favourite list. Please <a href="{% url 'main_app:home' %}" style="text-decoration: underline; color: white;">add</a></h2>{% endif %}
+      {% if favourite %}
+      <table class="table table-hover" style="color: white; font-size: 18px;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for favourite_product in favourite %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ favourite_product.annonce.name }}</td>
+            <td>{{ favourite_product.annonce.price }}</td>
+
+            {% for photo in photos%}
+				{% if photo.annonce == favourite_product.annonce %}
+            <td><img class="img-fluid" src="{{ photo.imageURL }}" style="width: 60px;"></td>
+
+							{{ "<!--" }}
+  {%endif%}
+{%endfor%}
+{{ "-->" }}
+
+            <td>
+                  <a
+                    href="" style="color:red;"
+                  >
+                  <i class="fas fa-heart fa-2x"></i></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+
+    </div>
+  </header>
+  {% endblock %}
+</div>

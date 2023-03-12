@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2514aace29.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'registre/registre.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <title>registre</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'main_app:home'%}">
+            <!-- <img src="img/brand.png" class="brand"> -->
+            <i class="fa-solid fa-arrow-left"></i>
+          </a>
+          <h2 class="text-muted"> <img style="width : 193px;height : 50px;" src="{% static 'img/LOGO11.png' %}"> <span class="text-warning"> Registration</span></h2>
+         <ul class="">
+            
+         </ul>
+        </div>
+      </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 register mx-auto mt-5 p-4">
+                <div class="register-header mt-5 mb-4">
+                    <h4>Créez un compte</h4>
+                    <p>
+                        Bénéficiez d'une expérience personnalisée avec du contenu en lien avec votre activité et vos centres d'intérêt sur notre service
+                    </p>
+                </div>
+
+                <div class="register-body">
+                    <div class="choice mb-4">
+                        <a href="{%url 'main_app:normal-registre' %}"><i class="fa-regular fa-circle"></i><small>Pour vous *</small></a>
+                        <a href="{%url 'main_app:pro-registre' %}"><i class="fa-regular fa-circle"></i><small>Pour votre entreprise</small></a>
+                    </div>
+
+                    <div class="login mb-4">
+                        <span>
+                            Vous avez déjà un compte ?
+                            <a href="{% url 'main_app:login'%}">Me connecter</a>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- <div class="register-footer">
+                    <div class="mb-5">
+                        <small class="text-secondary">* Vous agissez à titre professionnel ? 
+                            <a href="#" class="text-secondary">Créez plutôt un compte pro !</a>
+                        </small>
+                    </div>
+                    <small class="text-secondary mb-5">
+                        À défaut, en application de l’article L 132-2 du Code de la consommation qui sanctionne les pratiques commerciales trompeuses, vous encourez une peine d’emprisonnement de 2 ans et une amende de 300 000 euros.
+                    </small>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

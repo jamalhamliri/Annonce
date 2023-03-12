@@ -1,0 +1,77 @@
+{% extends 'petite_annonce/elements/layouts/base.html'%}
+{% load widget_tweaks %}
+{%load static%}
+{% block additional_css %}
+<head>
+    <meta charset="UTF-8">
+	<meta name="csrf_token" content="{{ csrf_token }}">
+    <title>{%block title%} Ajouter Annonce {%endblock%}</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+<link rel="stylesheet" href="{%static 'style1.css'%}">
+
+{% endblock %}
+{% block message %}
+
+{% endblock %}
+{% block content%}
+<div style="background-color:Tomato;color:black;">
+{% include 'petite_annonce/elements/alert.html' %}
+</div>
+
+<body>
+    <form method="post" enctype="multipart/form-data">
+{%include 'petite_annonce/elements/category.html'%}
+        {%include 'petite_annonce/elements/wilaya.html'%}
+        <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" >le nom de l'annonce :</label>
+                    {{form.name}}
+                </div>
+              </div>
+             <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" >le type d'annonce :</label>
+                    {{form.type}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+            <div class="form-outline">
+                <label class="form-label" >le prix par Euro :</label>
+                {{form.price|attr:"type:number"|attr:"class:form-control"}}
+            </div>
+            </div>
+
+        </div>
+
+<div class="row">
+     <div class="col-md-6 mb-4">
+    <div class="form-outline">
+        <label class="form-label">Description:</label>
+        {{ form.description|attr:"rows:3"|attr:"class:form-control-lg"}}
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-4">
+            <div class="form-check">
+                {{form.available|attr:"type:checkbox"|attr:"class:form-check-input"}}
+                <label class="form-check-label" >La Disponibilite :</label>
+            </div>
+            </div>
+</div>
+        <div required class="row">
+        {{ photo.as_p }}
+        </div>
+        <div class="row">
+        {{ photo_form.as_p }}
+        </div>
+
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
+    </form>
+
+</body>
+{% endblock %}

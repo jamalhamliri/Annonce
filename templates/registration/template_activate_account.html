@@ -1,0 +1,7 @@
+{% autoescape off %}
+Hi {{ user.email }},
+
+pour con
+
+{{ protocol }}://{{ domain }}{% url 'main_app:activate' uidb64=uid token=token %}
+{% endautoescape %}
