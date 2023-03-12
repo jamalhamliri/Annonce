@@ -76,7 +76,7 @@ class AddTravel(forms.ModelForm):
         super(AddTravel, self).__init__(*args, **kwargs)
         self.fields['ville_depart'].widget.attrs.update({'class': "form-control"})
         self.fields['ville_arrive'].widget.attrs.update({'class': "form-control"})
-        self.fields['type'].widget.attrs.update({'class': "form-select"})
+
         self.fields['budget'].widget.attrs.update({'class': "form-control"})
 
 

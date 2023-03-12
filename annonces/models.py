@@ -133,7 +133,6 @@ class Voyage(models.Model):
     ville_arrive = models.CharField(max_length=200)
     date_depart = models.DateField(default=False)
     date_arrive = models.DateField(default=False)
-    type = models.ForeignKey(Voyage_Type, on_delete=models.CASCADE)
     description = models.TextField(blank=True, default=' ')
     budget = models.DecimalField(max_digits=10, decimal_places=2)
     created = models.DateTimeField(auto_now_add=True)
