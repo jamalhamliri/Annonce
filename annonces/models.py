@@ -107,14 +107,14 @@ class Place(models.Model):
 class Images(models.Model):
     annonce = models.ForeignKey(Annonce, on_delete=models.CASCADE, default=None, related_name='images')
     image = models.ImageField(upload_to='media/annonce', validators=[file_size])
-    IMAGE_MAX_SIZE = (800, 800)
+    IMAGE_MAX_SIZE = (400, 400)
 
-    """def resize_image(self):
+    def resize_image(self):
         image = Image.open(self.image)
         image.thumbnail(self.IMAGE_MAX_SIZE)
         # sauvegarde de l’image redimensionnée dans le système de fichiers
         # ce n’est pas la méthode save() du modèle !
-        image.save(self.image.path)"""
+        image.save(self.image.path)
 
     @property
     def imageURL(self):

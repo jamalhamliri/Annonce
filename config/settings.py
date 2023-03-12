@@ -24,24 +24,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 import environ
-env=environ.Env()
+
+env = environ.Env()
 environ.Env.read_env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-$1o$#1$g8k40ujj!7i#rjc@-d=1^x65z-h6c*=plcax1dj7s4x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
 
 # Application definition
-CORS_ALLOWED_ORIGINS: False
+CORS_ALLOWED_ORIGINS: True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -58,12 +57,12 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'outil',
     'favourite',
-"corsheaders",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -95,39 +94,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-"""'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
-        'NAME': 'petite_annonce',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }"""
-"""'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'petite_annonce',
-        'USER': 'postgres',
-        'PASSWORD': 'walid123',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }"""
-"""'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.mysql',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
-        'NAME': 'petite_annonce',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }"""
+
 import dj_database_url
+
 DATABASES = {
-'default': dj_database_url.parse(env('DATABASE_URL'))
+    'default': dj_database_url.parse(env('DATABASE_URL'))
 }
 # FOR GEODJANGO
 POSTGIS_VERSION = (2, 4, 3)
@@ -183,7 +154,7 @@ else:
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = Path(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -203,4 +174,3 @@ EMAIL_HOST_USER = 'jamalinfo10@gmail.com'
 EMAIL_HOST_PASSWORD = 'lervlqybweeeyroe'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
