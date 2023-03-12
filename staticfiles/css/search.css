@@ -1,0 +1,47 @@
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.search{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 5px;
+}
+
+.search .form-control,.search .input-group-text, .search .dropdown-toggle{
+    background-color: #f4f6f7;
+    border: none;
+    transition-duration: 0.4s;
+}
+
+.search .dropdown-toggle:hover{
+    color: black;
+}
+
+.btn-price{
+    background-color: white;
+    border: 1px solid rgb(202, 209, 217);
+    padding: 3px;
+    border-radius: 15px;
+    width: 62px;
+    transition-duration: 0.4s;
+}
+
+.search input[type="text"],.search .dropdown-toggle{
+    font-size: 15px;
+}
+
+.btn-price:hover{
+    background-color: #f4f6f7;
+}
+
+.search .form-check-label{
+    font-size: 14px;
+}
+
+.search .btn-post{
+    font-size: 13px;
+    font-weight: 600;
+    background-color: #4183d7;
+}
+
+

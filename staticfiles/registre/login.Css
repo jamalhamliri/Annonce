@@ -1,0 +1,27 @@
+.login{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    background-position: center;
+}
+
+.login{
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.login .login-body a,.login .login-footer a {
+    text-decoration: none;
+}
+
+.login .login-footer .btn {
+    /* width : 78%; */
+    background-color: rgb(65, 131, 215);;
+}
+
+.login span{
+    font-size: 14px;
+    font-weight: 600;
+}

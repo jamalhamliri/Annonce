@@ -1,0 +1,33 @@
+
+.navbar{
+    font-family: 'Nunito', sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.navbar .navbar-brand img{
+    width: 120px;
+}
+
+.navbar .btn-poste{
+    background-color: #ff6e14;
+    transition-duration: 0.4s;
+    color: white;
+}
+
+.navbar .btn-poste:hover{
+    background-color: #c0562a;
+}
+
+.navbar .bar .nav-link{
+    font-size: 13px;
+}
+
+.hvr-underline-from-center:before{
+    background: #ff6e14;
+    
+}
+
+.navbar-toggler-icon{
+    color: rgb(255, 110, 20);
+}
+

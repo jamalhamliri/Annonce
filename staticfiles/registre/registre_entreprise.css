@@ -1,0 +1,11 @@
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
+span,h5,h6{
+    font-weight: 600;
+}
+
+span{
+    font-size:14px;
+}

@@ -41,7 +41,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
 
 # Application definition
-CORS_ALLOWED_ORIGINS: True
+CORS_ALLOWED_ORIGINS: False
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -166,6 +166,10 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 if DEBUG:
     STATICFILES_DIRS = (
